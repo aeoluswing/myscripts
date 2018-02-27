@@ -16,7 +16,12 @@ def show_dir(path='.', depth=0, maxdepth=20, ignore_path=[]):
         return
     if depth == 0:
         print("current_path:[" + os.path.abspath(path) + "]")
-    for item in os.listdir(path):
+    try:
+        list = os.listdir(path)
+    except os.error:
+        print("No permission to list directory")
+        return
+    for item in list:
         # anything in ignore_path will be ignored
         if item in ignore_path:
             continue
