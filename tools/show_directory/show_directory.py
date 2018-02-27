@@ -19,7 +19,7 @@ def show_dir(path='.', depth=0, maxdepth=20, ignore_path=[]):
     try:
         list = os.listdir(path)
     except os.error:
-        print("No permission to list directory")
+        print("|    " * depth + "|+++ " + "Warning:No permission to list directory")
         return
     for item in list:
         # anything in ignore_path will be ignored
